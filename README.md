@@ -54,3 +54,12 @@ To get a local copy up and running follow these simple example steps.
    npm start
    npm run dev
 ```
+
+## Working
+
+<p style="display:flex;" >
+<img src="assets/signup.jpg" width="300" title="WEB Page">
+<img src="assets/login.jpg" width="300" title="WEB Page">
+<img src="assets/dashboard.jpg" width="300" title="WEB Page">
+
+</p>

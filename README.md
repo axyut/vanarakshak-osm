@@ -1,8 +1,8 @@
-# File_Uploader
+# OSM Hackfest
 
 ## About The Project
 
-Upload files and manage them. Your free Cloud storage
+Saving Trees, Saving Lives.
 
 ### Built With
 
@@ -33,7 +33,7 @@ To get a local copy up and running follow these simple example steps.
 2. Open a terminal, navigate to Root directory .
 
 ```sh
-   cd file-uploader
+   cd osm
 ```
 
 3. Build npm dependencies
@@ -42,7 +42,7 @@ To get a local copy up and running follow these simple example steps.
    npm i
 ```
 
-4. Create .env file in root directory and paste
+4. Copy environment variables examples from `env.example` or Create .env file in root directory and paste
 
 ```sh
    MONGO_CONNECT=mongodb://localhost:27017/userDB

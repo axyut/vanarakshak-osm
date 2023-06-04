@@ -3,11 +3,16 @@ const router = express.Router();
 
 const authRouter = require("./auth");
 const userRouter = require("./user");
+const publicRouter = require("./public");
+const plantRouter = require("./plant");
 
+//
+router.use("/api", publicRouter);
 router.use("/api/auth", authRouter);
 router.use("/api/user", userRouter);
+router.use("/api/plant", plantRouter);
 
-// APIs
+// homePage
 router.get("/", (req, res) => {
 	res.json({
 		msg: "Welcome",

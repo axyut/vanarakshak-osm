@@ -114,7 +114,7 @@ const Login = () => {
 						</span>
 						<span>
 							<a
-								href={import.meta.env.VITE_BASE_URL + "/api"}
+								href={import.meta.env.VITE_BACKEND + "/api"}
 								target="_blank"
 							>
 								API?

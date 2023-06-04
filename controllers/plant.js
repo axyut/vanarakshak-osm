@@ -4,6 +4,8 @@ const { StatusCodes: Code } = require("http-status-codes");
 const User = require("../models/User");
 const Plant = require("../models/Plant");
 
+const { postLeader } = require("../controllers/leaderboard");
+
 // Middleware authentication data
 //const { firstName, lastName, email, uuid } = req.userFound;
 function getDays(x) {
@@ -41,7 +43,9 @@ const onePlant = async (req, res) => {
 	}
 
 	try {
-		const mongoId = await User.findOne({ uuid }).select("_id");
+		const { _id: mongoId, firstName } = await User.findOne({ uuid }).select(
+			"_id firstName"
+		);
 		const plant = new Plant({
 			plantName,
 			plantType,
@@ -51,8 +55,13 @@ const onePlant = async (req, res) => {
 		});
 
 		await plant.save();
+
+		// call update leaderboard function
+
 		console.log(`${firstName} Registered Plant ${nickName}`);
-		res.status(Code.CREATED).json({ msg: "Plant successfully Created!" });
+		res.status(Code.CREATED).json({
+			msg: "Plant successfully Created!",
+		});
 	} catch (error) {
 		console.log(error);
 		throw new CustomAPIError(error.message || error.name || error.msg);

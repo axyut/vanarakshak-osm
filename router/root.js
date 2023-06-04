@@ -5,12 +5,14 @@ const authRouter = require("./auth");
 const userRouter = require("./user");
 const publicRouter = require("./public");
 const plantRouter = require("./plant");
+const leaderRouter = require("./leaderboard");
 
 //
 router.use("/api", publicRouter);
 router.use("/api/auth", authRouter);
 router.use("/api/user", userRouter);
 router.use("/api/plant", plantRouter);
+router.use("/api/leaderboard", leaderRouter);
 
 // homePage
 router.get("/", (req, res) => {

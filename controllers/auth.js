@@ -2,6 +2,7 @@ const { NotFoundError, BadRequestError, CustomAPIError } = require("../errors");
 const { StatusCodes: Code } = require("http-status-codes");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const { postLeader } = require("./leaderboard");
 
 const register = async (req, res) => {
 	const { firstName, lastName, email, phone, password } = req.body;
@@ -23,8 +24,18 @@ const register = async (req, res) => {
 		});
 
 		await user.save();
-		console.log(`${firstName} Registered.`);
-		res.status(Code.CREATED).json({ msg: "User Successfully Created!" });
+
+		// POST to leaderboard
+		const { _id: mongoId } = await User.findOne({ email });
+		const rank = await postLeader(0, mongoId, firstName);
+		if (rank) {
+			console.log(`${firstName} Registered at rank:${rank}`);
+
+			res.status(Code.CREATED).json({
+				msg: "User Successfully Created!",
+				rank,
+			});
+		}
 	} catch (error) {
 		console.log(error);
 		throw new CustomAPIError(error.message || error.name || error.msg);

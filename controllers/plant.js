@@ -8,9 +8,6 @@ const { postLeader } = require("../controllers/leaderboard");
 
 // Middleware authentication data
 //const { firstName, lastName, email, uuid } = req.userFound;
-function getDays(x) {
-	return Math.floor(x / 1000 / 60 / 60 / 24 / 365);
-}
 
 const myPlant = async (req, res) => {
 	const { firstName, uuid } = req.userFound;

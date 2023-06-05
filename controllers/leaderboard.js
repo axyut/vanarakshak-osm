@@ -1,15 +1,32 @@
 const { NotFoundError, BadRequestError, CustomAPIError } = require("../errors");
 const { StatusCodes: Code } = require("http-status-codes");
 const Leaderboard = require("../models/LeaderBoard");
+const User = require("../models/User");
 
 // API
 const leaders = async (req, res) => {
-	res.status(Code.ACCEPTED).json({ msg: "Top 10 leaders" });
+	try {
+		const topTenRanks = await Leaderboard.find({})
+			.sort({ rank: 1 })
+			.limit(10);
+		res.status(Code.ACCEPTED).json({ topTenRanks });
+	} catch (error) {
+		console.log(error);
+		throw new CustomAPIError(error.message || error.name || error.msg);
+	}
 };
 
 // API
 const rank = async (req, res) => {
-	res.status(Code.ACCEPTED).json({ msg: "My leaderboard rank" });
+	const { uuid } = req.userFound;
+	try {
+		const { _id: leaderId } = await User.findOne({ uuid }).select("_id");
+		const userRank = await Leaderboard.findOne({ leaderId });
+		res.status(Code.ACCEPTED).json({ userRank });
+	} catch (error) {
+		console.log(error);
+		throw new CustomAPIError(error.message || error.name || error.msg);
+	}
 };
 
 // Update Function

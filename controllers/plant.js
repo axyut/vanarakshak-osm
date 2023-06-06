@@ -1,27 +1,42 @@
 const { NotFoundError, BadRequestError, CustomAPIError } = require("../errors");
 const { StatusCodes: Code } = require("http-status-codes");
 
-const User = require("../models/User");
 const Plant = require("../models/Plant");
+const Garden = require("../models/Garden");
 
 const { updateLeader } = require("../utils/leaderboard");
 
 // Middleware authentication data
 //const { firstName, lastName, email, _id } = req.userFound;
 
-const myPlant = async (req, res) => {
+const myPlants = async (req, res) => {
 	const { firstName, _id } = req.userFound;
 
 	try {
+		// User's plants
 		const plants = await Plant.find({
 			plantedBy: _id,
 		}).select("-_id -__v -updatedAt");
 
-		if (!plants) throw new NotFoundError();
+		// User's Gardens
+		const gardens = await Garden.find({
+			plantedBy: _id,
+		}).select("-_id -__v -updatedAt");
+
+		if (!plants || !gardens) throw new NotFoundError();
+
+		// All Plants Count (also available in Leaderboard directly)
+		let count = 0;
+		gardens.forEach((garden) => {
+			count += garden.plantsCount;
+		});
+		count = count + plants.length;
 
 		res.status(Code.ACCEPTED).json({
-			count: plants.length,
+			plantsCount: count,
+			user: firstName,
 			plants,
+			gardens,
 		});
 	} catch (error) {
 		console.log(error);
@@ -29,7 +44,7 @@ const myPlant = async (req, res) => {
 	}
 };
 
-const onePlant = async (req, res) => {
+const plant = async (req, res) => {
 	const { plantName, plantType, status, nickName } = req.body;
 	const { _id: mongoId, firstName } = req.userFound;
 
@@ -62,4 +77,35 @@ const onePlant = async (req, res) => {
 	}
 };
 
-module.exports = { myPlant, onePlant };
+const garden = async (req, res) => {
+	const { plantsCount, gardenName, plantType, status } = req.body;
+	const { _id: mongoId, firstName } = req.userFound;
+
+	if (!gardenName || !plantType || !status || !plantsCount) {
+		throw new BadRequestError("Fill all the required fields!");
+	}
+	try {
+		const garden = new Garden({
+			plantsCount,
+			gardenName,
+			plantType,
+			status,
+			plantedBy: mongoId,
+		});
+		await garden.save();
+
+		const newStats = await updateLeader(plantsCount, mongoId);
+
+		console.log(
+			`${firstName} Planted ${plantsCount} in ${gardenName} garden `
+		);
+		res.status(Code.CREATED).json({
+			msg: "Garden planted successfully!",
+			newStats,
+		});
+	} catch (error) {
+		console.log(error);
+		throw new CustomAPIError(error.message || error.name || error.msg);
+	}
+};
+module.exports = { myPlants, plant, garden };

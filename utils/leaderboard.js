@@ -12,7 +12,7 @@ const updateLeader = async (addCount, leaderId) => {
 			"-_id -leaderId -createdAt -updatedAt -__v"
 		);
 		const update = {
-			plantsCount: plantsCount + addCount,
+			plantsCount: plantsCount + Number(addCount),
 		};
 		const updated = await Leaderboard.findOneAndUpdate(
 			{ leaderId },

@@ -1,5 +1,6 @@
-const public = async (req, res) => {
-	res.status(200).json({ message: "Public api here." });
+const stats = async (req, res) => {
+	res.status(200).json({
+		message: "Website's acomplishments",
+	});
 };
-
-module.exports = { public };
+module.exports = { stats };

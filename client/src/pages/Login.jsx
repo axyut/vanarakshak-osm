@@ -106,7 +106,7 @@ const Login = () => {
 
 						<span>
 							<a
-								href="https://github.com/axyut/resume_maker.git"
+								href="https://github.com/axyut/osm"
 								target="_blank"
 							>
 								About?

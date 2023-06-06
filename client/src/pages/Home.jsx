@@ -87,7 +87,7 @@ const Home = () => {
 
 				<h2>{userData.firstName}</h2>
 				<h2>{userData.lastName}</h2>
-				<h2>{userData.uuid}</h2>
+				<h2>{userData.userId}</h2>
 				<h2>{userData.email}</h2>
 			</div>
 		</>

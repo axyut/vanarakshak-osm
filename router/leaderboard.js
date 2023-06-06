@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const authenticate = require("../middleware/authenticate");
-const { leaders, rank } = require("../controllers/leaderboard");
+const { topTenLeaders, rank } = require("../controllers/leaderboard");
 
-router.get("/", leaders);
-router.post("/rank", authenticate, rank);
+router.get("/", topTenLeaders);
+router.get("/rank", authenticate, rank);
 
 module.exports = router;

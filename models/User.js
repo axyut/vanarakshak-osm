@@ -1,19 +1,17 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { v4: uuidv4 } = require("uuid");
 
 const userSchema = new mongoose.Schema(
 	{
-		uuid: {
-			type: String,
-			required: [true, "UUID is required"],
-			unique: true,
-			tirm: true, // trim unwanted spaces
-			minlength: 8,
-			maxlength: 40,
-			default: uuidv4(),
-		},
+		// uuid: {
+		// 	type: String,
+		// 	required: [true, "UUID is required"],
+		// 	unique: true,
+		// 	tirm: true, // trim unwanted spaces
+		// 	minlength: 8,
+		// 	maxlength: 40,
+		// },
 		firstName: {
 			type: String,
 			required: [true, "Firstname is required"],
@@ -77,7 +75,7 @@ userSchema.methods.createToken = async function () {
 	try {
 		let sendToken = jwt.sign(
 			{
-				uuid: this.uuid,
+				userId: this._id,
 				firstName: this.firstName,
 				lastName: this.lastName,
 				email: this.email,

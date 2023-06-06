@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const { public } = require("../controllers/public");
+const { stats } = require("../controllers/public");
 
-router.get("/public", public);
+router.get("/stats", stats);
 
 router.get("/", async (req, res) => {
 	res.json({
@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 			server: "/",
 			client: "http://127.0.0.1:5000/",
 			api: {
-				GET_public: "/api/public",
+				GET_statistics: "/api/stats",
 			},
 		},
 	});

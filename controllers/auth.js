@@ -2,7 +2,26 @@ const { NotFoundError, BadRequestError, CustomAPIError } = require("../errors");
 const { StatusCodes: Code } = require("http-status-codes");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
-const { postLeader } = require("./leaderboard");
+const { postLeader } = require("../utils/leaderboard");
+
+//const { v4: uuidv4 } = require("uuid");
+// async function generateUniqueUUID() {
+// 	let isUnique = false;
+// 	let newUUID;
+
+// 	while (!isUnique) {
+// 		newUUID = uuidv4(); // Generate a new UUID
+
+// 		// Check if the generated UUID already exists in the database
+// 		const existingUser = await User.findOne({ uuid: newUUID });
+
+// 		if (!existingUser) {
+// 			isUnique = true;
+// 		}
+// 	}
+
+// 	return newUUID;
+// }
 
 const register = async (req, res) => {
 	const { firstName, lastName, email, phone, password } = req.body;
@@ -15,6 +34,7 @@ const register = async (req, res) => {
 		if (await User.findOne({ email })) {
 			throw new BadRequestError("User already Exists!");
 		}
+
 		const user = new User({
 			firstName,
 			lastName,
@@ -26,16 +46,15 @@ const register = async (req, res) => {
 		await user.save();
 
 		// POST to leaderboard
-		const { _id: mongoId } = await User.findOne({ email });
-		const rank = await postLeader(0, mongoId, firstName);
-		if (rank) {
-			console.log(`${firstName} Registered at rank:${rank}`);
+		const { _id: leaderId } = await User.findOne({ email });
+		const rank = await postLeader(leaderId, firstName);
 
-			res.status(Code.CREATED).json({
-				msg: "User Successfully Created!",
-				rank,
-			});
-		}
+		console.log(`${firstName} Registered at rank:${rank}`);
+
+		res.status(Code.CREATED).json({
+			msg: "User Successfully Created!",
+			rank,
+		});
 	} catch (error) {
 		console.log(error);
 		throw new CustomAPIError(error.message || error.name || error.msg);

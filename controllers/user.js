@@ -1,13 +1,13 @@
 const { StatusCodes: Code } = require("http-status-codes");
 
 const userInfo = async (req, res) => {
-	const { firstName, lastName, email, uuid } = req.userFound;
+	const { firstName, lastName, email, _id: userId } = req.userFound;
 
 	res.status(Code.ACCEPTED).json({
 		firstName,
 		lastName,
 		email,
-		uuid,
+		userId,
 	});
 };
 

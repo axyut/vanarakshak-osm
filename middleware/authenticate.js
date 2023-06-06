@@ -13,9 +13,9 @@ const authenticate = async (req, res, next) => {
 		const verifyToken = jwt.verify(token, process.env.JWT_SECRET);
 
 		const userFound = await User.findOne({
-			uuid: verifyToken.uuid,
+			_id: verifyToken.userId,
 			"tokens.token": token,
-		}).select("-_id firstName lastName email uuid");
+		});
 
 		if (!userFound) {
 			throw new Error("User not found.");

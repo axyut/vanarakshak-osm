@@ -4,19 +4,17 @@ const { StatusCodes: Code } = require("http-status-codes");
 const User = require("../models/User");
 const Plant = require("../models/Plant");
 
-const { postLeader } = require("../controllers/leaderboard");
+const { updateLeader } = require("../utils/leaderboard");
 
 // Middleware authentication data
-//const { firstName, lastName, email, uuid } = req.userFound;
+//const { firstName, lastName, email, _id } = req.userFound;
 
 const myPlant = async (req, res) => {
-	const { firstName, uuid } = req.userFound;
+	const { firstName, _id } = req.userFound;
 
 	try {
-		const mongoId = await User.findOne({ uuid }).select("_id");
-
 		const plants = await Plant.find({
-			plantedBy: mongoId,
+			plantedBy: _id,
 		}).select("-_id -__v -updatedAt");
 
 		if (!plants) throw new NotFoundError();
@@ -33,16 +31,13 @@ const myPlant = async (req, res) => {
 
 const onePlant = async (req, res) => {
 	const { plantName, plantType, status, nickName } = req.body;
-	const { firstName, uuid } = req.userFound;
+	const { _id: mongoId, firstName } = req.userFound;
 
 	if (!plantName || !plantType || !status || !nickName) {
 		throw new BadRequestError("Fill all the required fields!");
 	}
 
 	try {
-		const { _id: mongoId, firstName } = await User.findOne({ uuid }).select(
-			"_id firstName"
-		);
 		const plant = new Plant({
 			plantName,
 			plantType,
@@ -53,11 +48,13 @@ const onePlant = async (req, res) => {
 
 		await plant.save();
 
-		// call update leaderboard function
+		// Update Leaderboard statistics
+		const newStats = await updateLeader(1, mongoId);
 
 		console.log(`${firstName} Registered Plant ${nickName}`);
 		res.status(Code.CREATED).json({
 			msg: "Plant successfully Created!",
+			newStats,
 		});
 	} catch (error) {
 		console.log(error);

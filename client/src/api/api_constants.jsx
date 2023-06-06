@@ -5,8 +5,8 @@ export const API = {
 		REGISTER: "/api/auth/register",
 	},
 	USER: {
-		UUID: (uuid) => {
-			return "/api/user/" + uuid;
+		UserId: (userId) => {
+			return "/api/user/" + userId;
 		},
 		BASIC: "/api/user/basicdata",
 	},

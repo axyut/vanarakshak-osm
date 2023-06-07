@@ -5,7 +5,7 @@ const { latestEvents, gift, report } = require("../controllers/contribute");
 const authenticate = require("../middleware/authenticate");
 
 router.get("/latestEvents", latestEvents);
-router.get("/gift", authenticate, gift);
-router.get("/report", report);
+router.post("/gift", authenticate, gift);
+router.post("/report", report);
 
 module.exports = router;

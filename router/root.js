@@ -18,19 +18,6 @@ router.use("/api/contribute", contributeRouter);
 
 // homePage
 router.get("/", (req, res) => {
-	res.json({
-		msg: "Welcome to backend server",
-		routes: {
-			server: "/",
-			client: "http://127.0.0.1:5000/",
-			api: {
-				auth: {
-					POST_register: "/api/auth/register",
-					POST_login: "/api/auth/login",
-					GET_delete: "/api/auth/delete",
-				},
-			},
-		},
-	});
+	res.redirect("/api/public");
 });
 module.exports = router;

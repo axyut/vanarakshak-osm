@@ -32,7 +32,7 @@ const NavigationBar = ({ setSidebarItems }) => {
     }
     if (title === "Contribution") {
       setSidebarItems(contributionPages);
-      navigate("/dashboard/contribution/your_contribution", {
+      navigate("/dashboard/contribution/events", {
         state: { parent: "Contribution" },
       });
     }

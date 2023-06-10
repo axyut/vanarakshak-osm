@@ -1,59 +1,69 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getLoginInfo } from "../utils/LoginInfo";
-
+import {
+  plantPages,
+  contributionPages,
+  leaderboardPages,
+} from "../utils/MenuItems";
 import "../css/navbar.css";
 
-const NavigationBar = () => {
-	const navigate = useNavigate();
-	const [isMobile, setIsMobile] = useState(false);
+const NavigationBar = ({ setSidebarItems }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-	const handleMenu = () => {
-		setIsMobile(!isMobile);
-	};
+  const [loginInfo, setLoginInfo] = useState(getLoginInfo());
 
-	const handleLogout = () => {
-		localStorage.removeItem("token");
-		toast.info("Logged Out!");
-		navigate("/");
-		return <Navigate to="/login"></Navigate>;
-	};
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    toast.info("Logged Out!");
+    navigate("/login");
+  };
 
-	return (
-		<nav className={`navbar ${isMobile ? "navbar-mobile" : ""}`}>
-			<div className="navbar-logo" onClick={handleMenu}>
-				<Link to="/">
-					<h3>{getLoginInfo()?.firstName}</h3>
-				</Link>
-				<div className="navbar-mobile-icon">{isMobile ? "✕" : "▥"}</div>
-			</div>
-			<ul className={`navbar-links ${isMobile ? "active" : ""}`}>
-				<li className="navbar-item">
-					<Link to="/">
-						<div className="navbar-link">Dashboard</div>
-					</Link>
-				</li>
-				<li className="navbar-item">
-					<Link to="/user">
-						<div className="navbar-link">Leaderboard</div>
-					</Link>
-				</li>
-				<li className="navbar-item">
-					<Link to="/user">
-						<div className="navbar-link">Plant</div>
-					</Link>
-				</li>
-				<li className="navbar-item">
-					<Link to="/">
-						<div className="navbar-link" onClick={handleLogout}>
-							Logout
-						</div>
-					</Link>
-				</li>
-			</ul>
-		</nav>
-	);
+  let navbarArr = ["Plants", "Contribution", "Leaderboard"];
+  const handleLinks = (title) => {
+    if (title === "Plants") {
+      setSidebarItems(plantPages);
+      navigate("/dashboard/plants/dashboard", { state: { parent: "Plants" } });
+    }
+    if (title === "Contribution") {
+      setSidebarItems(contributionPages);
+      navigate("/dashboard/contribution/your_contribution", {
+        state: { parent: "Contribution" },
+      });
+    }
+
+    if (title === "Leaderboard") {
+      setSidebarItems(leaderboardPages);
+      navigate("/dashboard/leaderboard/leader", {
+        state: { parent: "Leaderboard" },
+      });
+    }
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="nav_container">
+        <ul>
+          {navbarArr?.map((item) => (
+            <li
+              key={item}
+              onClick={() => handleLinks(item)}
+              className={`${location.state?.parent === item ? "active" : ""}`}
+            >
+              {item}
+            </li>
+          ))}
+
+          {/* <li onClick={handleLogout}>Logout</li> */}
+        </ul>
+        <div className="user_info">
+          <div>{/* <img src={loginInfo} alt="User" /> */}</div>
+        </div>
+      </div>
+    </nav>
+  );
 };
 
 export default NavigationBar;

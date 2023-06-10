@@ -9,57 +9,33 @@ import ProtectedRoute from "./protectedRoute";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import User from "./pages/User";
+import Dashboard from "./layout/Dashboard";
 
 const App = () => {
-	return (
-		<div>
-			<BrowserRouter>
-				<ToastContainer
-					transition={Zoom}
-					autoClose={2000}
-					position={"top-right"}
-					hideProgressBar={true}
-					newestOnTop={false}
-					closeOnClick
-					rtl={false}
-					draggable={false}
-					pauseOnHover
-					theme="dark"
-				></ToastContainer>
-				<Routes>
-					<Route path="/login" element={<Login></Login>}></Route>
-					<Route path="/signUp" element={<SignUp></SignUp>}></Route>
-
-					<Route
-						path="/home"
-						element={
-							<ProtectedRoute>
-								<Home />
-							</ProtectedRoute>
-						}
-					/>
-
-					<Route
-						path="/"
-						element={
-							<ProtectedRoute>
-								<Home />
-							</ProtectedRoute>
-						}
-					></Route>
-					<Route
-						path="/user"
-						element={
-							<ProtectedRoute>
-								<User />
-							</ProtectedRoute>
-						}
-					/>
-					<Route path="*" element={<ErrorPage />}></Route>
-				</Routes>
-			</BrowserRouter>
-		</div>
-	);
+  return (
+    <BrowserRouter>
+      <ToastContainer
+        transition={Zoom}
+        autoClose={2000}
+        position={"top-right"}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable={false}
+        pauseOnHover
+        theme="dark"
+      ></ToastContainer>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard/*" element={<Dashboard />} />
+        </Route>
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

@@ -1,18 +1,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import YourContribution from "../pages/Contribution/YourContribution";
-import CommunityContribution from "../pages/Contribution/CommunityContribution";
+import Events from "../pages/Contribution/Events";
+import Report from "../pages/Contribution/Report";
+import Donate from "../pages/Contribution/Donate";
 
 const Contribution = () => {
-  return (
-    <Routes>
-      <Route path="your_contribution" element={<YourContribution />} />
-      <Route
-        path="community_contributiion"
-        element={<CommunityContribution />}
-      />
-    </Routes>
-  );
+	return (
+		<Routes>
+			<Route path="events" element={<Events />} />
+			<Route path="report" element={<Report />} />
+			<Route path="donate" element={<Donate />} />
+		</Routes>
+	);
 };
 
 export default Contribution;

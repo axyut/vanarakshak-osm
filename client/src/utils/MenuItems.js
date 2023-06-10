@@ -1,62 +1,75 @@
+import dotdot from "../Assets/icons/dotdot.svg";
+import tree from "../Assets/icons/tree.svg";
+import community from "../Assets/icons/community.svg";
+import dashboard from "../Assets/icons/dashboard.svg";
+import events from "../Assets/icons/events.svg";
+import user from "../Assets/icons/user.svg";
+
 const plantPages = [
-  {
-    label: "Dashboard",
-    link: "/dashboard/plants/dashboard",
-    icon: "Haha",
-    parent: "Plants",
-  },
-  {
-    label: "Community",
-    link: "/dashboard/plants/community",
-    icon: "Haha",
-    parent: "Plants",
-  },
-  {
-    label: "Add Plants",
-    link: "/dashboard/plants/add_plants",
-    icon: "Haha",
-    parent: "Plants",
-  },
-  {
-    label: "Reports",
-    link: "/dashboard/plants/report",
-    icon: "Haha",
-    parent: "Plants",
-  },
-  {
-    label: "Others",
-    link: "/dashboard/plants/others",
-    icon: "Haha",
-    parent: "Plants",
-  },
+	{
+		label: "Dashboard",
+		link: "/dashboard/plants/dashboard",
+		icon: dashboard,
+		parent: "Plants",
+	},
+	{
+		label: "Community",
+		link: "/dashboard/plants/community",
+		icon: community,
+		parent: "Plants",
+	},
+	{
+		label: "Add Plants",
+		link: "/dashboard/plants/add_plants",
+		icon: tree,
+		parent: "Plants",
+	},
+	{
+		label: "My Plants",
+		link: "/dashboard/plants/myPlants",
+		icon: user,
+		parent: "Plants",
+	},
+	{
+		label: "Others",
+		link: "/dashboard/plants/others",
+		icon: dotdot,
+		parent: "Plants",
+	},
 ];
 const contributionPages = [
-  {
-    label: "Your Contribution",
-    link: "/dashboard/contribution/your_contribution",
-    icon: "Haha",
-    parent: "Contribution",
-  },
-  {
-    label: "Communities contribution",
-    link: "/dashboard/contribution/community_contribution",
-    icon: "Haha",
-    parent: "Contribution",
-  },
+	{
+		label: "Events",
+		link: "/dashboard/contribution/events",
+		icon: events,
+		parent: "Contribution",
+	},
+	{
+		label: "Report",
+		link: "/dashboard/contribution/report",
+		icon: events,
+		parent: "Contribution",
+	},
+	{
+		label: "Donation",
+		link: "/dashboard/contribution/donate",
+		icon: events,
+		parent: "Contribution",
+	},
 ];
 const leaderboardPages = [
-  {
-    label: "Leader",
-    link: "/dashboard/leaderboard/leader",
-    icon: "Haha",
-    parent: "Leaderboard",
-  },
-  {
-    label: "Community",
-    link: "/dashboard/leaderboard/community",
-    icon: "Haha",
-    parent: "Leaderboard",
-  },
+	{
+		label: "Leader",
+		link: "/dashboard/leaderboard/leader",
+		icon: user,
+		parent: "Leaderboard",
+	},
+	{
+		label: "Community",
+		link: "/dashboard/leaderboard/community",
+		icon: community,
+		parent: "Leaderboard",
+	},
 ];
 
 export { plantPages, contributionPages, leaderboardPages };

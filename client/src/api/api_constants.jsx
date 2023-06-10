@@ -13,4 +13,21 @@ export const API = {
 	FILE: {
 		UPLOAD: "/api/file/upload",
 	},
+	PLANT: {
+		ALL_PLANTS: "/api/plant/my",
+		ONE: "/api/plant/one",
+		MANY: "/api/plant/many",
+	},
+	LEADERBOARD: {
+		MY_RANK: "/api/leaderboard/rank",
+		TOP_TEN: "/api/leaderboard/",
+	},
+	PUBLIC: {
+		STATS: "/api/public/stats",
+	},
+	CONTRIBUTE: {
+		EVENTS: "/api/contribute/latestEvents",
+		REPORT: "/api/contribute/report",
+		DONATE: "/api/contribute/donate",
+	},
 };

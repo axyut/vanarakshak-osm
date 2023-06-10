@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
 import "../css/sidebar.css";
+import { NavLink } from "react-router-dom";
 import Logo from "../Assets/Images/Logo.png";
 
 export default function Sidebar({ sidebarItems }) {

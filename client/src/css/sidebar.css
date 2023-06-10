@@ -1,0 +1,113 @@
+.sidebar_main {
+  height: 100vh;
+  width: 110px;
+  flex-shrink: 0;
+}
+
+aside.sidebar {
+  height: 100%;
+  z-index: 100;
+  width: 110px;
+  position: absolute;
+  overflow: hidden;
+  z-index: 60;
+  transition: 300ms ease-in-out;
+  background-color: #242424;
+}
+
+aside.sidebar:hover {
+  width: 350px;
+}
+
+aside.sidebar .logo_bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-left: 35px;
+  transition: 300ms ease-in-out;
+}
+
+aside.sidebar:hover .logo_bar {
+  padding-left: 50px;
+}
+
+aside.sidebar:hover .logo_bar h2 {
+  opacity: 1;
+}
+
+aside.sidebar .logo_bar h2 {
+  opacity: 0;
+  transition: 300ms ease-in-out;
+}
+
+aside.sidebar .logo_bar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+aside.sidebar:hover a {
+  max-width: 220px;
+  padding-left: 30px;
+}
+
+aside.sidebar:hover a p:nth-child(2) {
+  opacity: 1;
+}
+
+aside.sidebar:hover ul {
+  padding-left: 50px;
+}
+
+aside.sidebar ul {
+  display: grid;
+  padding-left: 10px;
+  gap: 10px;
+  transition: 300ms ease-in-out;
+}
+
+aside.sidebar a {
+  display: flex;
+  align-items: center;
+  max-width: 70px;
+  width: 100%;
+  overflow: hidden;
+  height: 74.5px;
+  transition: 200ms ease-out;
+  border-radius: 16.3366px;
+  font-size: 16.5px;
+  line-height: 19px;
+  color: #8b8c91;
+  font-weight: 400;
+  outline: white;
+  padding-left: 20px;
+}
+
+aside.sidebar a p {
+  flex-shrink: 0;
+  transition: 300ms ease-in-out;
+}
+
+aside.sidebar a p:nth-child(2) {
+  opacity: 0;
+}
+
+aside.sidebar a p:first-child {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+aside.sidebar:hover a p:first-child {
+  margin-left: 0;
+}
+
+aside.sidebar a:is(.active, :hover) {
+  color: white;
+  background: linear-gradient(
+    269.74deg,
+    rgba(255, 255, 255, 0.21) -254.09%,
+    rgba(255, 255, 255, 0) 99.84%
+  );
+}

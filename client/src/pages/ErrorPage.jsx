@@ -5,7 +5,6 @@ import { useEffect } from "react";
 const ErrorPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/");
     toast.error("Page donot exist!");
   }, []);
   return (

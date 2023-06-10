@@ -18,7 +18,29 @@ nav.navbar .nav_container {
 }
 
 nav.navbar .nav_container .user_info {
-  background-color: red;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(95.71deg, #394359 -14.7%, #232731 123.09%);
+  box-shadow: 3.68217px 6.62791px 39.7674px rgba(17, 188, 169, 0.06);
+  border-radius: 8.83721px;
+  padding: 7.5px 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+nav.navbar .nav_container .user_info img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+nav.navbar .nav_container .user_info .title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
 }
 
 nav.navbar ul {
@@ -37,13 +59,49 @@ nav.navbar ul li {
   border-radius: 12px;
   transition: 200ms ease-in-out;
   cursor: pointer;
+  color: #8b8c91;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.05em;
 }
 
 nav.navbar ul li:is(.active, :hover) {
+  color: white;
   background: linear-gradient(
     88.18deg,
     #282e3b -209.49%,
     #333c4f 30.26%,
     #363f54 89.68%
   );
+}
+
+nav.navbar .nav_container .user_info ul.list {
+  display: grid;
+  position: absolute;
+  right: -30px;
+  z-index: 30;
+  transition: 250ms ease-in-out;
+  overflow: hidden;
+  width: 150px;
+  height: fit-content;
+}
+
+nav.navbar .nav_container .user_info ul.list li {
+  display: block;
+  text-align: left;
+  padding: 10px 14px;
+  height: fit-content;
+  transition: 150ms ease-in-out;
+  cursor: pointer;
+  color: #8b8c91;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: normal;
+  border-radius: 0;
+  letter-spacing: 0.05em;
+}
+
+nav.navbar .nav_container .user_info ul.list li:hover {
+  color: white;
 }

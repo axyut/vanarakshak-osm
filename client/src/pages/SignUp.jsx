@@ -30,10 +30,8 @@ const SignUp = () => {
     let postData = { firstName, lastName, email, password };
     AXIOS.post(API.AUTH.REGISTER, postData)
       .then((res) => {
-        console.log("Res", res);
-
         toast.success(`Congratulations! ${firstName}. Please Log in.`);
-        navigate("/home");
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);

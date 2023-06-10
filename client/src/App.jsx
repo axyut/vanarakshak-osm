@@ -10,6 +10,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import User from "./pages/User";
 import Dashboard from "./layout/Dashboard";
+import FrontPage from "./pages/FrontPage";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         theme="dark"
       ></ToastContainer>
       <Routes>
+        <Route path="/" element={<FrontPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route element={<ProtectedRoute />}>

@@ -1,15 +1,17 @@
 import dotdot from "../Assets/icons/dotdot.svg";
 import tree from "../Assets/icons/tree.svg";
 import community from "../Assets/icons/community.svg";
-import dashboard from "../Assets/icons/dashboard.svg";
+//import dash from "../Assets/icons/dash.svg";
 import events from "../Assets/icons/events.svg";
 import user from "../Assets/icons/user.svg";
+//import dashB from "../Assets/Icons/dashB.svg";
+import earth from "../Assets/Icons/earth.svg";
 
 const plantPages = [
 	{
 		label: "Dashboard",
 		link: "/dashboard/plants/dashboard",
-		icon: dashboard,
+		icon: earth,
 		parent: "Plants",
 	},
 	{

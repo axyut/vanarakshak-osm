@@ -56,6 +56,13 @@ const plantSchema = new mongoose.Schema(
 			minlength: 2,
 			maxlength: 20,
 		},
+		location: {
+			type: [Number], // Array of numbers: [latitude, longitude]
+			required: [true, "Location is required!"],
+			trim: true,
+			//unique: true
+		},
+		longtiude: {},
 	},
 	{ timestamps: true }
 );
@@ -72,3 +79,10 @@ const plantSchema = new mongoose.Schema(
 const Plant = mongoose.model("PLANT", plantSchema);
 
 module.exports = Plant;
+
+// location: [37.7749, -122.4194]
+// const yourDocument = await YourModel.findOne({
+// 	/* your query */
+// });
+// const latitude = yourDocument.location[0];
+// const longitude = yourDocument.location[1];

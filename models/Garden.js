@@ -1,5 +1,20 @@
 const mongoose = require("mongoose");
 
+const AreaSchema = new mongoose.Schema({
+	radius: {
+		type: Number,
+		required: true,
+		default: 1,
+	},
+	location: {
+		type: [Number],
+		required: [true, "Location is required!"],
+		trim: true,
+		//unique: true
+	},
+	_id: false,
+});
+
 const gardenSchema = new mongoose.Schema(
 	{
 		plantsCount: {
@@ -49,6 +64,7 @@ const gardenSchema = new mongoose.Schema(
 				message: "{VALUE} is not Supported",
 			},
 		},
+		area: { type: AreaSchema, required: true },
 	},
 	{ timestamps: true }
 );
@@ -56,3 +72,11 @@ const gardenSchema = new mongoose.Schema(
 const Garden = mongoose.model("GARDEN", gardenSchema);
 
 module.exports = Garden;
+
+// area: {
+//     radius: 2,
+//     location: {
+//       type: 'Point',
+//       coordinates: [2.2242, -1.4252]
+//     }
+//   }

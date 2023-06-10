@@ -5,7 +5,7 @@ const leaderSchema = new mongoose.Schema(
 		rank: {
 			type: Number,
 			required: [true, "Rank is required!"],
-			unique: true,
+			//unique: true,
 		},
 		plantsCount: {
 			type: Number,
@@ -36,7 +36,7 @@ const leaderSchema = new mongoose.Schema(
 			required: [true, "Temperature is required!"],
 			default: 0,
 		},
-		globalWarming: {
+		oxygen: {
 			type: Number,
 			required: [true, "Global warming level is required!"],
 			default: 0,

@@ -45,10 +45,10 @@ const myPlants = async (req, res) => {
 };
 
 const plant = async (req, res) => {
-	const { plantName, plantType, status, nickName } = req.body;
+	const { plantName, plantType, status, nickName, location } = req.body;
 	const { _id: mongoId, firstName } = req.userFound;
 
-	if (!plantName || !plantType || !status || !nickName) {
+	if (!plantName || !plantType || !status || !nickName || !location) {
 		throw new BadRequestError("Fill all the required fields!");
 	}
 
@@ -58,6 +58,7 @@ const plant = async (req, res) => {
 			plantType,
 			status,
 			nickName,
+			location,
 			plantedBy: mongoId,
 		});
 
@@ -78,10 +79,10 @@ const plant = async (req, res) => {
 };
 
 const garden = async (req, res) => {
-	const { plantsCount, gardenName, plantType, status } = req.body;
+	const { plantsCount, gardenName, plantType, status, area } = req.body;
 	const { _id: mongoId, firstName } = req.userFound;
 
-	if (!gardenName || !plantType || !status || !plantsCount) {
+	if (!gardenName || !plantType || !status || !plantsCount || !area) {
 		throw new BadRequestError("Fill all the required fields!");
 	}
 	try {
@@ -90,6 +91,7 @@ const garden = async (req, res) => {
 			gardenName,
 			plantType,
 			status,
+			area,
 			plantedBy: mongoId,
 		});
 		await garden.save();

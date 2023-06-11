@@ -9,8 +9,8 @@ const latestEvents = async (req, res) => {
 	});
 };
 
-const gift = async (req, res) => {
+const contribute = async (req, res) => {
 	res.status(200).json({ message: "Gifted to your friend." });
 };
 
-module.exports = { latestEvents, report, gift };
+module.exports = { latestEvents, report, contribute };

@@ -6,6 +6,10 @@ import events from "../Assets/icons/events.svg";
 import user from "../Assets/icons/user.svg";
 //import dashB from "../Assets/Icons/dashB.svg";
 import earth from "../Assets/Icons/earth.svg";
+import report from "../Assets/Icons/report.svg";
+import lifebuoy from "../Assets/Icons/lifebuoy.svg";
+import exclaimReport from "../Assets/Icons/exclaimReport.svg";
+import dollar from "../Assets/Icons/dollar.svg";
 
 const plantPages = [
 	{
@@ -41,6 +45,12 @@ const plantPages = [
 ];
 const contributionPages = [
 	{
+		label: "Contribute",
+		link: "/dashboard/contribution/contribute",
+		icon: lifebuoy,
+		parent: "Contribution",
+	},
+	{
 		label: "Events",
 		link: "/dashboard/contribution/events",
 		icon: events,
@@ -49,13 +59,7 @@ const contributionPages = [
 	{
 		label: "Report",
 		link: "/dashboard/contribution/report",
-		icon: events,
-		parent: "Contribution",
-	},
-	{
-		label: "Donation",
-		link: "/dashboard/contribution/donate",
-		icon: events,
+		icon: exclaimReport,
 		parent: "Contribution",
 	},
 ];

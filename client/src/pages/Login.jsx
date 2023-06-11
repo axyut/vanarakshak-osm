@@ -7,113 +7,155 @@ import { API } from "../api/api_constants";
 import { getLoginInfo } from "../utils/LoginInfo";
 
 import "../css/login_signup.css";
+import Buddha from "../Assets/Images/buddha_Avatar.png";
+import PenguinCircle from "../Assets/Images/penguin_linux_circle.png";
+import PenguinSquare from "../Assets/Images/linux_penguin.png";
 
 const Login = () => {
-  let navigate = useNavigate();
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
-  };
-  const loginApp = async () => {
-    const { email, password } = user;
-    if (email == "" || password == "") {
-      toast.info("Please fill the information");
-      return;
-    }
-    try {
-      const response = await AXIOS.post(API.AUTH.LOGIN, {
-        email,
-        password,
-      });
-      // Setting Up recieved token for the user
-      localStorage.setItem("token", response.data.token);
-      dispatchEvent(new Event("storage"));
-      const firstName = getLoginInfo()?.firstName;
-      toast.success(`Welcome Back! ${firstName}`);
-      navigate("/dashboard/plants/dashboard", { state: { parent: "Plants" } });
-    } catch (error) {
-      console.log(error);
-      localStorage.removeItem("token");
-      toast.warn(error.response.data.msg || "Login Failed");
-    }
-  };
-  return (
-    <>
-      <div className="main">
-        <div>
-          <div className="container">
-            <h3
-              style={{
-                display: "grid",
-                justifyContent: "center",
-              }}
-            >
-              Account Login.
-            </h3>
-            <form>
-              <div className="inputFields">
-                <label>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={user.email}
-                  onChange={handleChange}
-                  autoComplete="off"
-                  placeholder="chad@mail.com"
-                />
-              </div>
-              <div className="inputFields">
-                <label>Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={user.password}
-                  onChange={handleChange}
-                  autoComplete="off"
-                  placeholder="********"
-                />
-              </div>
-              <div>
-                <button className="active-btn" onClick={loginApp} type="button">
-                  <span>Login</span>
-                </button>
-              </div>
-            </form>
-            <span>
-              Haven't Registered Yet?
-              <a onClick={() => navigate("/signUp")}>Sign Up!</a>
-            </span>
+	let navigate = useNavigate();
+	const [user, setUser] = useState({
+		email: "",
+		password: "",
+	});
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+		setUser({ ...user, [name]: value });
+	};
+	const loginApp = async () => {
+		const { email, password } = user;
+		if (email == "" || password == "") {
+			toast.info("Please fill the information");
+			return;
+		}
+		try {
+			const response = await AXIOS.post(API.AUTH.LOGIN, {
+				email,
+				password,
+			});
+			// Setting Up recieved token for the user
+			localStorage.setItem("token", response.data.token);
+			dispatchEvent(new Event("storage"));
+			const firstName = getLoginInfo()?.firstName;
+			toast.success(`Welcome Back! ${firstName}`);
+			navigate("/dashboard/plants/dashboard", {
+				state: { parent: "Plants" },
+			});
+		} catch (error) {
+			console.log(error);
+			localStorage.removeItem("token");
+			toast.warn(error.response.data.msg || "Login Failed");
+		}
+	};
+	return (
+		<>
+			<div className="main">
+				<div>
+					<div className="container">
+						<h3
+							style={{
+								display: "grid",
+								justifyContent: "center",
+							}}
+						>
+							Account Login.
+						</h3>
+						<form>
+							<div className="inputFields">
+								<label>Email</label>
+								<input
+									type="email"
+									name="email"
+									value={user.email}
+									onChange={handleChange}
+									autoComplete="off"
+									placeholder="chad@mail.com"
+								/>
+							</div>
+							<div className="inputFields">
+								<label>Password</label>
+								<input
+									type="password"
+									name="password"
+									value={user.password}
+									onChange={handleChange}
+									autoComplete="off"
+									placeholder="********"
+								/>
+							</div>
+							<div>
+								<button
+									className="active-btn"
+									onClick={loginApp}
+									type="button"
+								>
+									<span>Login</span>
+								</button>
+							</div>
+						</form>
+						<span>
+							Haven't Registered Yet?
+							<a onClick={() => navigate("/register")}>
+								Sign Up!
+							</a>
+						</span>
 
-            <span>
-              <a href="https://github.com/axyut/osm" target="_blank">
-                About?
-              </a>
-            </span>
-            <span>
-              <a href={import.meta.env.VITE_BACKEND + "/api"} target="_blank">
-                API?
-              </a>
-            </span>
-          </div>
-        </div>
-        <div className="container">
-          <h1>OSM Hackfest Project Means planting the trees</h1>
-          <h2>About the project</h2>
-          <h3>Vision</h3>
-          <span>Mission</span>
-          <label>Idea</label>
-          <p>OSM Hackfest Project</p>
-        </div>
-      </div>
-      {/* <div>
+						<span>
+							<a
+								href="https://github.com/axyut/osm"
+								target="_blank"
+							>
+								About?
+							</a>
+						</span>
+						<span>
+							<a
+								href={import.meta.env.VITE_BACKEND + "/api"}
+								target="_blank"
+							>
+								API?
+							</a>
+						</span>
+					</div>
+				</div>
+				<div className="container">
+					<div className="container-div">
+						<div className="top-3s">
+							<h1>Vanarakshak</h1>
+							<span>Our Top 3 Leaders</span>
+
+							<div className="rank1">
+								<img alt="buddha" src={Buddha} />
+
+								<div className="people-info">
+									<p>550 Plants</p>
+									<span> Ashbin Wosti</span>
+								</div>
+							</div>
+							<div className="rank2">
+								<img alt="linux" src={PenguinCircle} />
+
+								<div className="people-info">
+									<p>510 Plants</p>
+									<span> Binaye Marahatta</span>
+								</div>
+							</div>
+							<div className="rank3">
+								<img alt="linux" src={PenguinSquare} />
+
+								<div className="people-info">
+									<p>460 Plants</p>
+									<span>Rajesh Hamal</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* <div>
 				<h1>About the Project</h1>
 			</div> */}
-    </>
-  );
+		</>
+	);
 };
 
 export default Login;

@@ -31,6 +31,20 @@
 	box-sizing: border-box;
 }
 
+.container-div {
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+}
+.container img {
+	margin: 100px 10px 10px 10px;
+
+	width: 380px;
+	height: 400px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
 .inputFields {
 	display: flex;
 	align-items: center;
@@ -71,4 +85,30 @@ input {
 	border-radius: 20% 45% 20% 5%/5% 20% 25% 60%;
 	background-color: transparent;
 	border: 2px solid hsl(198, 1%, 29%);
+}
+
+/*
+from frontpage
+*/
+
+.top-3s img {
+	width: 200px;
+	height: 200px;
+}
+
+.people-info {
+	width: 206px;
+	height: 76px;
+}
+.rank1 {
+	width: 226.31px;
+	height: 360px;
+}
+.rank2 {
+	width: 259px;
+	height: 347px;
+}
+.rank3 {
+	width: 245px;
+	height: 339px;
 }

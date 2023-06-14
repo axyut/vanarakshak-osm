@@ -47,7 +47,7 @@ const myPlants = async (req, res) => {
 const plant = async (req, res) => {
 	const { plantName, plantType, status, nickName, location } = req.body;
 	const { _id: mongoId, firstName } = req.userFound;
-
+	console.log(plantName, plantType, status, nickName, location);
 	if (!plantName || !plantType || !status || !nickName || !location) {
 		throw new BadRequestError("Fill all the required fields!");
 	}

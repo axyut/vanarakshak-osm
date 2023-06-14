@@ -26,11 +26,11 @@ const authenticate = async (req, res, next) => {
 		console.log("Sucessfully Authenticated.");
 		next();
 	} catch (error) {
-		if (error.message == "jwt expired") {
-			res.status(500).json({ message: error.message });
+		if (error.message == "Token Expired! Please Log In.") {
+			res.status(500).json({ msg: error.message });
 			console.log(error);
 		} else {
-			res.status(500).json({ message: "Unauthorized Access." });
+			res.status(500).json({ msg: "Unauthorized Access." });
 			console.log(error);
 		}
 	}

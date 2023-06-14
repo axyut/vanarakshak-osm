@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const plantSchema = new mongoose.Schema(
 	{
-		//userId: {},
 		plantName: {
 			type: String,
 			required: [true, "Plant Name is required"],
@@ -62,7 +61,6 @@ const plantSchema = new mongoose.Schema(
 			trim: true,
 			//unique: true
 		},
-		longtiude: {},
 	},
 	{ timestamps: true }
 );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "../../css/map.css";
 
+import "../../css/map.css";
 const Dashboard = () => {
 	const initialPosition = [27.69202, 84.43701];
 
@@ -14,7 +14,7 @@ const Dashboard = () => {
 						center={initialPosition}
 						zoom={10}
 						scrollWheelZoom={false}
-						style={{ height: "500px", width: "1000px" }}
+						className="mapContainer"
 					>
 						<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 						<Marker position={initialPosition}>
@@ -23,6 +23,9 @@ const Dashboard = () => {
 							</Popup>
 						</Marker>
 					</MapContainer>
+				</div>
+				<div>
+					<button>Share</button>
 				</div>
 			</div>
 		</>

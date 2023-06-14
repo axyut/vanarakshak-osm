@@ -34,9 +34,14 @@ const Register = () => {
 				toast.success(`Congratulations! ${firstName}. Please Log in.`);
 				navigate("/login");
 			})
-			.catch((err) => {
-				console.log(err);
-				toast.warn("Something Went wrong!");
+			.catch((error) => {
+				console.log(error);
+				toast.warn(
+					error.response.data.msg ||
+						error.message ||
+						error.name ||
+						"Something Went wrong!"
+				);
 			});
 	};
 

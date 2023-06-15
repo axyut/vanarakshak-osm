@@ -16,7 +16,7 @@ const updateLeader = async (addCount, leaderId) => {
 		// aqi 10%
 		plantsCount += Number(addCount);
 		carbon += addCount * 25.32;
-		temperature += addCount * 4.8;
+		temperature += addCount * 4.5;
 		oxygen += addCount * 135;
 		aqi += addCount * 10;
 

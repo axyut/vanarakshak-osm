@@ -10,18 +10,15 @@ import report from "../Assets/Icons/report.svg";
 import lifebuoy from "../Assets/Icons/lifebuoy.svg";
 import exclaimReport from "../Assets/Icons/exclaimReport.svg";
 import dollar from "../Assets/Icons/dollar.svg";
+import dashboard from "../Assets/Icons/dashboard.svg";
+import housePlant from "../Assets/Icons/houseplant.svg";
+import squareDashboard from "../Assets/Icons/website-dashboard.svg";
 
 const plantPages = [
 	{
 		label: "Dashboard",
 		link: "/dashboard/plants/dashboard",
-		icon: earth,
-		parent: "Plants",
-	},
-	{
-		label: "Community",
-		link: "/dashboard/plants/community",
-		icon: community,
+		icon: housePlant,
 		parent: "Plants",
 	},
 	{
@@ -37,6 +34,12 @@ const plantPages = [
 		parent: "Plants",
 	},
 	{
+		label: "Community",
+		link: "/dashboard/plants/community",
+		icon: community,
+		parent: "Plants",
+	},
+	{
 		label: "Others",
 		link: "/dashboard/plants/others",
 		icon: dotdot,
@@ -47,7 +50,7 @@ const contributionPages = [
 	{
 		label: "Contribute",
 		link: "/dashboard/contribution/contribute",
-		icon: lifebuoy,
+		icon: earth,
 		parent: "Contribution",
 	},
 	{

@@ -82,7 +82,7 @@ userSchema.methods.createToken = async function () {
 				role: this.role,
 			},
 			process.env.JWT_SECRET,
-			{ expiresIn: "1h" }
+			{ expiresIn: "3d" }
 		);
 		this.tokens = this.tokens.concat({ token: sendToken });
 		await this.save();

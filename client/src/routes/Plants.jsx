@@ -10,9 +10,9 @@ const PlantRoute = () => {
 	return (
 		<Routes>
 			<Route path="dashboard" element={<Dashboard />} />
-			<Route path="community" element={<Community />} />
 			<Route path="add_plants" element={<AddPlant />} />
 			<Route path="myPlants" element={<MyPlants />} />
+			<Route path="community" element={<Community />} />
 			<Route path="others" element={<Other />} />
 		</Routes>
 	);

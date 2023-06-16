@@ -116,13 +116,13 @@ const Contribute = () => {
 				</p>
 			</div>
 			<div>
-				<h1>Add Plant</h1>
 				<div className="mapDiv">
 					<MapContainer
 						center={initialPosition}
 						zoom={13}
 						scrollWheelZoom={true}
 						className="mapContainer"
+						zoomControl={false}
 					>
 						<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 						<CustomMapEvents onClick={handleMapClick} />
@@ -173,9 +173,13 @@ const Contribute = () => {
 							value={privacy}
 							onChange={handleInputs}
 						></input>
-
+						<br />
 						<button onClick={addPlant} type="button">
 							Plant
+						</button>
+
+						<button onClick={addPlant} type="button">
+							Gift
 						</button>
 					</div>
 				</form>

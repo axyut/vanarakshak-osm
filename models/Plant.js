@@ -1,8 +1,45 @@
 const mongoose = require("mongoose");
 
+const AreaSchema = new mongoose.Schema({
+	place: {
+		type: String,
+		required: true,
+		tirm: true,
+		minlength: 3,
+	},
+	location: {
+		type: [Number],
+		required: [true, "Location is required!"],
+		trim: true,
+		unique: true,
+	},
+	_id: false,
+});
+
+const FileSchema = new mongoose.Schema({
+	filename: {
+		type: String,
+		required: [true, "Filename is required"],
+		tirm: true,
+		minlength: 2,
+		maxlength: 100,
+	},
+	path: { type: String, required: true },
+	size: {
+		type: Number,
+		required: true,
+		validate: {
+			validator: function (value) {
+				return value <= 2 * 1024 * 1024; // 10MB in bytes
+			},
+			message: "File size limit exceeded (10MB).",
+		},
+	},
+	_id: false,
+});
+
 const plantSchema = new mongoose.Schema(
 	{
-		//userId: {},
 		plantName: {
 			type: String,
 			required: [true, "Plant Name is required"],
@@ -43,7 +80,7 @@ const plantSchema = new mongoose.Schema(
 		status: {
 			type: String,
 			required: [true, "Health Status is required"],
-			default: "GREAT",
+			default: "OKAY",
 			enum: {
 				values: ["POOR", "OKAY", "NORMAL", "GREAT"],
 				message: "{VALUE} is not Supported",
@@ -56,13 +93,8 @@ const plantSchema = new mongoose.Schema(
 			minlength: 2,
 			maxlength: 20,
 		},
-		location: {
-			type: [Number], // Array of numbers: [latitude, longitude]
-			required: [true, "Location is required!"],
-			trim: true,
-			//unique: true
-		},
-		longtiude: {},
+		area: { type: AreaSchema, required: true },
+		file: { type: FileSchema },
 	},
 	{ timestamps: true }
 );

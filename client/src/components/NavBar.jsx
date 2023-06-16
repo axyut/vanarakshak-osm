@@ -8,8 +8,12 @@ import {
   leaderboardPages,
 } from "../utils/MenuItems";
 import "../css/navbar.css";
+
+// image icons
 import Avatarr from "../Assets/Images/Avatarr.png";
 import ArrowDown from "../Assets/Icons/arrowDown.svg";
+import Buddha from "../Assets/Images/buddha_Avatar.png";
+import LinuxPenguin from "../Assets/Images/penguin_linux_circle.png";
 
 const NavigationBar = ({ setSidebarItems }) => {
   const navigate = useNavigate();
@@ -28,11 +32,13 @@ const NavigationBar = ({ setSidebarItems }) => {
   const handleLinks = (title) => {
     if (title === "Plants") {
       setSidebarItems(plantPages);
-      navigate("/dashboard/plants/dashboard", { state: { parent: "Plants" } });
+      navigate("/dashboard/plants/dashboard", {
+        state: { parent: "Plants" },
+      });
     }
     if (title === "Contribution") {
       setSidebarItems(contributionPages);
-      navigate("/dashboard/contribution/events", {
+      navigate("/dashboard/contribution/contribute", {
         state: { parent: "Contribution" },
       });
     }

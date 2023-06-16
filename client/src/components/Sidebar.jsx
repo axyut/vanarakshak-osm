@@ -8,7 +8,7 @@ export default function Sidebar({ sidebarItems }) {
       <aside className="sidebar">
         <div className="logo_bar">
           <img src={Logo} alt="Logo" />
-          <h2>Vanrakshak</h2>
+          <h2>Vanarakshak</h2>
         </div>
         <ul>
           {sidebarItems?.map((i) => (

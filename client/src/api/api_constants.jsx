@@ -14,20 +14,20 @@ export const API = {
 		UPLOAD: "/api/file/upload",
 	},
 	PLANT: {
-		ALL_PLANTS: "/api/plant/my",
+		ALLPLANTS: "/api/plant/my",
 		ONE: "/api/plant/one",
 		MANY: "/api/plant/many",
 	},
 	LEADERBOARD: {
-		MY_RANK: "/api/leaderboard/rank",
-		TOP_TEN: "/api/leaderboard/",
+		MYRANK: "/api/leaderboard/rank",
+		TOPTEN: "/api/leaderboard/",
 	},
 	PUBLIC: {
 		STATS: "/api/public/stats",
 	},
 	CONTRIBUTE: {
+		CONTRIBUTE: "/api/contribute/",
 		EVENTS: "/api/contribute/latestEvents",
 		REPORT: "/api/contribute/report",
-		DONATE: "/api/contribute/donate",
 	},
 };

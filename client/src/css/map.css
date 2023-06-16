@@ -3,4 +3,9 @@
 	width: 700px;
 	height: 400px;
 	float: right;
+	border-radius: 5px;
+}
+
+.leaflet-control-attribution {
+	display: none !important;
 }

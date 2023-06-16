@@ -9,6 +9,9 @@ const Events = () => {
 		<>
 			<div style={{ margin: "20px" }}>
 				<h2>Events</h2>
+				<h3>Happening Right now!</h3>
+				<h3>Future Events</h3>
+				<h3>Past Events</h3>
 			</div>
 		</>
 	);

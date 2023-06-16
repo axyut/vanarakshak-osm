@@ -237,6 +237,7 @@ const AddPlant = () => {
 							zoom={13}
 							scrollWheelZoom={true}
 							className="mapContainer"
+							zoomControl={false}
 						>
 							<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 							<CustomMapEvents onClick={handleMapClick} />

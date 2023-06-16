@@ -71,8 +71,12 @@ const Dashboard = () => {
 						zoom={14}
 						scrollWheelZoom={true}
 						className="mapContainer"
+						zoomControl={false}
 					>
-						<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+						<TileLayer
+							attribution=""
+							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+						/>
 						{userData.plants.map((user, index) => (
 							<Marker
 								icon={plantsIcon}
@@ -80,12 +84,14 @@ const Dashboard = () => {
 								key={index}
 							>
 								<Tooltip>
-									Given name: {user.nickName} <br />
-									Plant name: {user.plantName}
-									<br />
-									Plant type: {user.plantType}
-									<br />
-									Status: {user.status}
+									<h3>
+										Given name: {user.nickName} <br />
+										Plant name: {user.plantName}
+										<br />
+										Plant type: {user.plantType}
+										<br />
+										Status: {user.status}
+									</h3>
 								</Tooltip>
 							</Marker>
 						))}
@@ -96,12 +102,14 @@ const Dashboard = () => {
 								key={index}
 							>
 								<Tooltip>
-									{user.plantsCount} plants in{" "}
-									{user.gardenName} garden. <br />
-									Plant type: {user.plantType}
-									<br />
-									Status: {user.status} <br />
-									Radius : {user.area.radius}
+									<h3>
+										{user.plantsCount} plants in{" "}
+										{user.gardenName} garden. <br />
+										Plant type: {user.plantType}
+										<br />
+										Status: {user.status} <br />
+										Radius : {user.area.radius}
+									</h3>
 								</Tooltip>
 							</Marker>
 						))}

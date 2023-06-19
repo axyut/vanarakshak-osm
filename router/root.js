@@ -6,8 +6,8 @@ const userRouter = require("./user");
 const publicRouter = require("./public");
 const plantRouter = require("./plant");
 const leaderRouter = require("./leaderboard");
-const contributeRouter = require("./contribute");
 
+const contributeRouter = require("./contribute");
 //
 router.use("/api/public", publicRouter);
 router.use("/api/auth", authRouter);

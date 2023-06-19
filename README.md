@@ -57,12 +57,21 @@ To get a local copy up and running follow these simple example steps.
 
 ## Working
 
-<p style="display:flex;" >
-<img src="assets/signup.jpg" width="300" title="WEB Page">
-<img src="assets/login.jpg" width="300" title="WEB Page">
-<img src="assets/dashboard.jpg" width="300" title="WEB Page">
-
-</p>
+-   ### Dashboard
+    All your plants in map view
+    <img src="assets/dashboard.png" width="600" title="WEB Page">
+-   ### Add Plant
+     <img src="assets/Dashboard-1.png" width="600" title="WEB Page">
+-   ### Grow with Community
+     <img src="assets/community.png" width="600" title="WEB Page">
+-   ### All the plants you've planted
+     <img src="assets/Myplants.png" width="600" title="WEB Page">
+-   ### Contribute
+     <img src="assets/Contribute(Donation).png" width="600" title="WEB Page">
+-   ### Report forest-fire and other mishaps
+     <img src="assets/Contribute(Report).png" width="600" title="WEB Page">
+-   ### Leaderboard
+     <img src="assets/Leaderboard(leader).png" width="600" title="WEB Page">
 
 ## Contributing
 

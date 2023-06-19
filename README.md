@@ -58,8 +58,8 @@ To get a local copy up and running follow these simple example steps.
 ## Working
 
 -   ### Dashboard
-    All your plants in map view
     <img src="assets/dashboard.png" width="600" title="WEB Page">
+   All your plants in map view
 -   ### Add Plant
      <img src="assets/Dashboard-1.png" width="600" title="WEB Page">
 -   ### Grow with Community
